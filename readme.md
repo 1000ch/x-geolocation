@@ -32,10 +32,16 @@ After loading, put `<x-geolocation>` tag.
 <x-geolocation></x-geolocation>
 ```
 
-To monitor position changing, execute `watchPosition()` function.
+To monitor position changing, execute `monitorPosition()` function.
 
 ```js
-document.querySelector('x-geolocation').watchPosition();
+document.querySelector('x-geolocation').monitorPosition();
+```
+
+Or set `monitor` attribute.
+
+```html
+<x-geolocation monitor></x-geolocation>
 ```
 
 ## License
