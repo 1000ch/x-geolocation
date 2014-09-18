@@ -1,7 +1,7 @@
 {
   "name": "x-geolocation",
   "main": "x-geolocation.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/1000ch/x-geolocation",
   "authors": [
     "1000ch <shogo.sensui@gmail.com>"
