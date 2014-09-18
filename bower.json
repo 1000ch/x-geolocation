@@ -1,0 +1,23 @@
+{
+  "name": "x-geolocation",
+  "main": "x-geolocation.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/1000ch/x-geolocation",
+  "authors": [
+    "1000ch <shogo.sensui@gmail.com>"
+  ],
+  "description": "Geolocation API Wrapper Element.",
+  "keywords": [
+    "geolocation",
+    "WebComponents",
+    "web-components"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
