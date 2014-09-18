@@ -23,6 +23,17 @@ window.XGeolocation = (function () {
     }
   });
 
+  Object.defineProperty(XGeolocationPrototype, 'monitor', {
+    configurable: false,
+    enumerable: false,
+    get: function () {
+      return this.hasAttribute('monitor');
+    },
+    set: function (newValue) {
+      this.setAttribute('monitor', newValue);
+    }
+  });
+
   XGeolocationPrototype.onPositionChangedCallback = function (position) {
     this.setAttribute('latitude', position.coords.latitude);
     this.setAttribute('longitude', position.coords.longitude);
@@ -39,18 +50,40 @@ window.XGeolocation = (function () {
       this.onPositionChangedCallback.bind(this),
       this.onPositionErrorCallback.bind(this)
     );
+
+    if (this.monitor) {
+      this.monitorPosition();
+    }
   };
 
-  XGeolocationPrototype.watchPosition = function () {
-    this.watchPositionId = navigator.geolocation.watchPosition(
-      this.onPositionChangedCallback.bind(this),
-      this.onPositionErrorCallback.bind(this)
-    );
+  XGeolocationPrototype.monitorPosition = function () {
+    if (!this.watchPositionId) {
+      this.watchPositionId = navigator.geolocation.watchPosition(
+        this.onPositionChangedCallback.bind(this),
+        this.onPositionErrorCallback.bind(this)
+      );
+    }
   };
 
-  XGeolocationPrototype.detachedCallback = function () {};
+  XGeolocationPrototype.stopMonitoring = function () {
+    if (this.watchPositionId) {
+      navigator.geolocation.clearWatch(this.watchPositionId);
+    }
+  };
 
-  XGeolocationPrototype.attributeChangedCallback = function () {};
+  XGeolocationPrototype.detachedCallback = function () {
+    this.stopMonitoring();
+  };
+
+  XGeolocationPrototype.attributeChangedCallback = function (attributeName, oldValue, newValue) {
+    if (attributeName === 'monitor') {
+      if (this.monitor) {
+        this.monitorPosition();
+      } else {
+        this.stopMonitoring();
+      }
+    }
+  };
 
   return document.registerElement('x-geolocation', {
     prototype: XGeolocationPrototype
