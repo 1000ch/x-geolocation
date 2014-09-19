@@ -1,7 +1,3 @@
-if (!document.registerElement) {
-  throw new Error('Browser does not support document.registerElement');
-}
-
 window.XGeolocation = (function () {
   'use strict';
 
@@ -9,23 +5,29 @@ window.XGeolocation = (function () {
 
   Object.defineProperty(XGeolocationPrototype, 'latitude', {
     configurable: false,
-    enumerable: false,
+    enumerable: true,
     get: function () {
       return this.getAttribute('latitude');
+    },
+    set: function (newValue) {
+      this.setAttribute('latitude', newValue);
     }
   });
 
   Object.defineProperty(XGeolocationPrototype, 'longitude', {
     configurable: false,
-    enumerable: false,
+    enumerable: true,
     get: function () {
       return this.getAttribute('longitude');
+    },
+    set: function (newValue) {
+      this.setAttribute('longitude', newValue);
     }
   });
 
   Object.defineProperty(XGeolocationPrototype, 'monitor', {
     configurable: false,
-    enumerable: false,
+    enumerable: true,
     get: function () {
       return this.hasAttribute('monitor');
     },
@@ -35,15 +37,11 @@ window.XGeolocation = (function () {
   });
 
   XGeolocationPrototype.onPositionChangedCallback = function (position) {
-    this.setAttribute('latitude', position.coords.latitude);
-    this.setAttribute('longitude', position.coords.longitude);
+    this.latitude = position.coords.latitude;
+    this.longitude = position.coords.longitude;
   };
 
-  XGeolocationPrototype.onPositionErrorCallback = function (positionError) {
-
-  };
-
-  XGeolocationPrototype.createdCallback = function () {};
+  XGeolocationPrototype.onPositionErrorCallback = function (positionError) {};
 
   XGeolocationPrototype.attachedCallback = function () {
     navigator.geolocation.getCurrentPosition(
