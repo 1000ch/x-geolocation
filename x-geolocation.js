@@ -39,6 +39,14 @@ window.XGeolocation = (function () {
   XGeolocationPrototype.onPositionChangedCallback = function (position) {
     this.latitude = position.coords.latitude;
     this.longitude = position.coords.longitude;
+
+    var event = new CustomEvent('positionchange', {
+      detail: {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      }
+    });
+    this.dispatchEvent(event);
   };
 
   XGeolocationPrototype.onPositionErrorCallback = function (positionError) {};
