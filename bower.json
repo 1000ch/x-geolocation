@@ -23,6 +23,7 @@
   "devDependencies": {
     "google-map": "~0.3.1",
     "paper-input": "Polymer/paper-input#~0.4.1",
-    "markdown.css": "~0.1.0"
+    "markdown.css": "~0.1.0",
+    "normalize.css": "~3.0.1"
   }
 }
