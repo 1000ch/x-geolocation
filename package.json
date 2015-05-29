@@ -1,6 +1,6 @@
 {
   "name": "x-geolocation",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Geolocation API Wrapper Element.",
   "scripts": {
     "start": "python -m http.server"
