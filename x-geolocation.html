@@ -6,7 +6,7 @@ window.XGeolocation = (function () {
   var XGeolocationPrototype = Object.create(HTMLElement.prototype);
 
   Object.defineProperty(XGeolocationPrototype, 'latitude', {
-    configurable: false,
+    configurable: true,
     enumerable: true,
     get: function () {
       return this.getAttribute('latitude');
@@ -17,7 +17,7 @@ window.XGeolocation = (function () {
   });
 
   Object.defineProperty(XGeolocationPrototype, 'longitude', {
-    configurable: false,
+    configurable: true,
     enumerable: true,
     get: function () {
       return this.getAttribute('longitude');
@@ -28,7 +28,7 @@ window.XGeolocation = (function () {
   });
 
   Object.defineProperty(XGeolocationPrototype, 'monitor', {
-    configurable: false,
+    configurable: true,
     enumerable: true,
     get: function () {
       return this.hasAttribute('monitor');
@@ -48,6 +48,7 @@ window.XGeolocation = (function () {
         longitude: position.coords.longitude
       }
     });
+
     this.dispatchEvent(event);
   };
 
