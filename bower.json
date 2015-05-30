@@ -22,7 +22,7 @@
   "devDependencies": {
     "google-map": "GoogleWebComponents/google-map#~1.0.0",
     "paper-input": "PolymerElements/paper-input#~1.0.0",
-    "markdown.css": "~0.1.0",
-    "normalize.css": "~3.0.1"
+    "primer-css": "~2.1.0",
+    "primer-markdown": "~2.1.7"
   }
 }

@@ -5,21 +5,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href="bower_components/normalize.css/normalize.css">
-    <link rel="stylesheet" href="bower_components/markdown.css/markdown.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/github.min.css">
+    <link rel="stylesheet" href="bower_components/primer-css/css/primer.css">
+    <link rel="stylesheet" href="bower_components/primer-markdown/dist/user-content.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css">
     <style>
       google-map {
         display: block;
         width: 100%;
         height: 480px;
-      }
-      .container {
-        margin: 0 auto;
-        min-width: 320px;
-        max-width: 960px;
-        display: flex;
-        flex-direction: column;
       }
       .location-container {
         display: flex;
@@ -32,7 +25,7 @@
     </style>
     <link rel="import" href="bower_components/google-map/google-map.html">
     <link rel="import" href="bower_components/paper-input/paper-input.html">
-    <script src="x-geolocation.js" async></script>
+    <link rel="import" href="x-geolocation.html">
   </head>
   <body>
     <a href="https://github.com/1000ch/x-geolocation"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
@@ -42,14 +35,14 @@
       <pre><code class="html">&lt;x-geolocation monitor&gt;&lt;/x-geolocation&gt;</code></pre>
       <div class="location-container">
         <div class="location-container__item">
-          Latitude <paper-input id="latitude"></paper-input>
+          <paper-input id="latitude" label="Latitude"></paper-input>
         </div>
         <div class="location-container__item">
-          Longitude <paper-input id="longitude"></paper-input>
+          <paper-input id="longitude" label="Longitude"></paper-input>
         </div>
       </div>
-      <google-map id="google-map" zoom="13">
-        <google-map-marker id="google-map-marker" title="You are here!"></google-map-marker>
+      <google-map zoom="13">
+        <google-map-marker title="You are here!"></google-map-marker>
       </google-map>
     </div>
     <script>
@@ -59,16 +52,26 @@
         // monitoring change
         var latitude = document.querySelector('#latitude');
         var longitude = document.querySelector('#longitude');
-        var googleMap = document.querySelector('#google-map');
-        var googleMapMarker = document.querySelector('#google-map-marker');
+        var googleMap = document.querySelector('google-map');
+        var googleMapMarker = document.querySelector('google-map-marker');
 
-        geolocation.addEventListener('positionchange', function (e) {
-          googleMap.latitude = googleMapMarker.latitude = latitude.value = e.detail.latitude;
-          googleMap.longitude = googleMapMarker.longitude = longitude.value = e.detail.longitude;
+        latitude.addEventListener('change', function (e) {
+          googleMap.latitude = googleMapMarker.latitude = latitude.value;
+        });
+
+        longitude.addEventListener('change', function (e) {
+          googleMap.longitude = googleMapMarker.longitude = longitude.value;
+        });
+
+        googleMap.addEventListener('google-map-ready', function () {
+          geolocation.addEventListener('positionchange', function (e) {
+            googleMap.latitude = googleMapMarker.latitude = latitude.value = e.detail.latitude;
+            googleMap.longitude = googleMapMarker.longitude = longitude.value = e.detail.longitude;
+          });
         });
       });
     </script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
