@@ -20,8 +20,8 @@
     "tests"
   ],
   "devDependencies": {
-    "google-map": "GoogleWebComponents/google-map#~1.0.0",
-    "paper-input": "PolymerElements/paper-input#~1.0.0",
+    "google-map": "GoogleWebComponents/google-map#~1.0.3",
+    "paper-input": "PolymerElements/paper-input#~1.0.6",
     "primer-css": "~2.1.0",
     "primer-markdown": "~2.1.7"
   }
