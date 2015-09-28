@@ -1,7 +1,5 @@
 # [`<x-geolocation>`](http://1000ch.github.io/x-geolocation)
 
-## About
-
 Geolocation API Wrapper Element.
 
 ## Install
