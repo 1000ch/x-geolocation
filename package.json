@@ -10,8 +10,9 @@
     "url": "https://github.com/1000ch/x-geolocation.git"
   },
   "keywords": [
+    "geolocation",
     "WebComponents",
-    "Geolocation"
+    "web-components"
   ],
   "author": {
     "name": "1000ch",

@@ -21,10 +21,10 @@ $ bower install x-geolocation
 Load `x-geolocation.js`.
 
 ```html
-<script src="x-geolocation.js"></script>
+<link rel="import" href="x-geolocation.html">
 ```
 
-After loading, put `<x-geolocation>` tag.
+Put `<x-geolocation>` tag.
 
 ```html
 <x-geolocation></x-geolocation>
