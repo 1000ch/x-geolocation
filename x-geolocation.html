@@ -3,7 +3,7 @@
 window.XGeolocation = (function () {
   'use strict';
 
-  var XGeolocationPrototype = Object.create(HTMLElement.prototype);
+  const XGeolocationPrototype = Object.create(HTMLElement.prototype);
 
   Object.defineProperty(XGeolocationPrototype, 'latitude', {
     configurable: true,
@@ -42,7 +42,7 @@ window.XGeolocation = (function () {
     this.latitude = position.coords.latitude;
     this.longitude = position.coords.longitude;
 
-    var event = new CustomEvent('positionchange', {
+    let event = new CustomEvent('positionchange', {
       detail: {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
