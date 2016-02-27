@@ -1,102 +1,84 @@
 <script>
-
 window.XGeolocation = (function () {
   'use strict';
 
-  const XGeolocationPrototype = Object.create(HTMLElement.prototype);
-
-  Object.defineProperty(XGeolocationPrototype, 'latitude', {
-    configurable: true,
-    enumerable: true,
-    get: function () {
+  class XGeolocation extends HTMLElement {
+    get latitude () {
       return this.getAttribute('latitude');
-    },
-    set: function (newValue) {
-      this.setAttribute('latitude', newValue);
     }
-  });
+    set latitude (value) {
+      this.setAttribute('latitude', value);
+    }
 
-  Object.defineProperty(XGeolocationPrototype, 'longitude', {
-    configurable: true,
-    enumerable: true,
-    get: function () {
+    get longitude () {
       return this.getAttribute('longitude');
-    },
-    set: function (newValue) {
-      this.setAttribute('longitude', newValue);
     }
-  });
+    set longitude (value) {
+      this.setAttribute('longitude', value);
+    }
 
-  Object.defineProperty(XGeolocationPrototype, 'monitor', {
-    configurable: true,
-    enumerable: true,
-    get: function () {
+    get monitor () {
       return this.hasAttribute('monitor');
-    },
-    set: function (newValue) {
-      this.setAttribute('monitor', newValue);
     }
-  });
-
-  XGeolocationPrototype.onPositionChangedCallback = function (position) {
-    this.latitude = position.coords.latitude;
-    this.longitude = position.coords.longitude;
-
-    let event = new CustomEvent('positionchange', {
-      detail: {
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      }
-    });
-
-    this.dispatchEvent(event);
-  };
-
-  XGeolocationPrototype.onPositionErrorCallback = function (positionError) {};
-
-  XGeolocationPrototype.attachedCallback = function () {
-    navigator.geolocation.getCurrentPosition(
-      this.onPositionChangedCallback.bind(this),
-      this.onPositionErrorCallback.bind(this)
-    );
-
-    if (this.monitor) {
-      this.monitorPosition();
+    set monitor (value) {
+      this.setAttribute('monitor', value);
     }
-  };
 
-  XGeolocationPrototype.monitorPosition = function () {
-    if (!this.watchPositionId) {
-      this.watchPositionId = navigator.geolocation.watchPosition(
+    attachedCallback() {
+      navigator.geolocation.getCurrentPosition(
         this.onPositionChangedCallback.bind(this),
         this.onPositionErrorCallback.bind(this)
       );
-    }
-  };
 
-  XGeolocationPrototype.stopMonitoring = function () {
-    if (this.watchPositionId) {
-      navigator.geolocation.clearWatch(this.watchPositionId);
-    }
-  };
-
-  XGeolocationPrototype.detachedCallback = function () {
-    this.stopMonitoring();
-  };
-
-  XGeolocationPrototype.attributeChangedCallback = function (attributeName, oldValue, newValue) {
-    if (attributeName === 'monitor') {
       if (this.monitor) {
         this.monitorPosition();
-      } else {
-        this.stopMonitoring();
       }
     }
-  };
 
-  return document.registerElement('x-geolocation', {
-    prototype: XGeolocationPrototype
-  });
+    detachedCallback() {
+      this.stopMonitoring();
+    }
+
+    attributeChangedCallback(attributeName, oldValue, newValue) {
+      if (attributeName === 'monitor') {
+        if (this.monitor) {
+          this.monitorPosition();
+        } else {
+          this.stopMonitoring();
+        }
+      }
+    }
+
+    onPositionChangedCallback(position) {
+      this.latitude = position.coords.latitude;
+      this.longitude = position.coords.longitude;
+
+      this.dispatchEvent(new CustomEvent('positionchange', {
+        detail: {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        }
+      }));
+    }
+
+    onPositionErrorCallback(positionError) {}
+
+    monitorPosition() {
+      if (!this.watchPositionId) {
+        this.watchPositionId = navigator.geolocation.watchPosition(
+          this.onPositionChangedCallback.bind(this),
+          this.onPositionErrorCallback.bind(this)
+        );
+      }
+    }
+
+    stopMonitoring() {
+      if (this.watchPositionId) {
+        navigator.geolocation.clearWatch(this.watchPositionId);
+      }
+    }
+  }
+
+  return document.registerElement('x-geolocation', XGeolocation);
 })();
-
 </script>
