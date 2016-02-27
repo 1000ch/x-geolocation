@@ -1,4 +1,4 @@
-# [`<x-geolocation>`](http://1000ch.github.io/x-geolocation)
+# `<x-geolocation>`
 
 Geolocation API Wrapper Element.
 
@@ -18,7 +18,7 @@ $ bower install x-geolocation
 
 ## Usage
 
-Load `x-geolocation.js`.
+Import `x-geolocation.html`.
 
 ```html
 <link rel="import" href="x-geolocation.html">
