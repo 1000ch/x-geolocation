@@ -1,5 +1,4 @@
-<script>
-customElements.define('x-geolocation', class XGeolocation extends HTMLElement {
+export default class XGeolocation extends HTMLElement {
   get latitude () {
     return this.getAttribute('latitude');
   }
@@ -79,5 +78,4 @@ customElements.define('x-geolocation', class XGeolocation extends HTMLElement {
       navigator.geolocation.clearWatch(this.watchPositionId);
     }
   }
-});
-</script>
+}
