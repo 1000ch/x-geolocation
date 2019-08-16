@@ -14,7 +14,6 @@
       a code { color: #199ad5 !important; }
       a:hover code, a:active code { color: #e2007a !important; }
     </style>
-    <link rel="import" href="x-geolocation.html">
   </head>
   <body>
     <div class="container">
@@ -40,6 +39,10 @@ $ bower install x-geolocation</code></pre>
       Latitude: <input id="latitude" type="text" readonly>
       Longitude: <input id="longitude" type="text" readonly>
     </div>
+    <script type="module">
+      import XGeolocation from './x-geolocation.js';
+      customElements.define('x-geolocation', XGeolocation);
+    </script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('x-geolocation').addEventListener('positionchange', e => {
