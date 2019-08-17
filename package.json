@@ -2,26 +2,23 @@
   "name": "x-geolocation",
   "version": "1.0.0",
   "description": "Geolocation API Wrapper Element.",
-  "scripts": {
-    "start": "python -m http.server"
+  "keywords": [
+    "WebComponents",
+    "geolocation",
+    "web-components"
+  ],
+  "homepage": "https://github.com/1000ch/x-geolocation",
+  "bugs": {
+    "url": "https://github.com/1000ch/x-geolocation/issues"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/1000ch/x-geolocation.git"
   },
-  "keywords": [
-    "geolocation",
-    "WebComponents",
-    "web-components"
-  ],
+  "license": "MIT",
   "author": {
     "name": "1000ch",
-    "email": "shogo.sensui@gmail.com",
-    "web": "http://github.com/1000ch"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/1000ch/x-geolocation/issues"
-  },
-  "homepage": "https://github.com/1000ch/x-geolocation"
+    "email": "shogosensui@gmail.com",
+    "web": "https://github.com/1000ch"
+  }
 }
