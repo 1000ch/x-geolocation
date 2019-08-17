@@ -1,25 +1,25 @@
 export default class XGeolocation extends HTMLElement {
-  get latitude () {
+  get latitude() {
     return this.getAttribute('latitude');
   }
 
-  set latitude (value) {
+  set latitude(value) {
     this.setAttribute('latitude', value);
   }
 
-  get longitude () {
+  get longitude() {
     return this.getAttribute('longitude');
   }
 
-  set longitude (value) {
+  set longitude(value) {
     this.setAttribute('longitude', value);
   }
 
-  get monitor () {
+  get monitor() {
     return this.hasAttribute('monitor');
   }
 
-  set monitor (value) {
+  set monitor(value) {
     this.setAttribute('monitor', value);
   }
 
@@ -38,7 +38,7 @@ export default class XGeolocation extends HTMLElement {
     this.stopMonitoring();
   }
 
-  attributeChangedCallback(attributeName, oldValue, newValue) {
+  attributeChangedCallback(attributeName) {
     if (attributeName === 'monitor') {
       if (this.monitor) {
         this.monitorPosition();
