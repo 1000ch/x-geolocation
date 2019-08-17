@@ -10,18 +10,15 @@ Using [npm](https://www.npmjs.org/package/x-geolocation):
 $ npm install x-geolocation
 ```
 
-Using [bower](http://bower.io/search/?q=x-geolocation):
-
-```sh
-$ bower install x-geolocation
-```
-
 ## Usage
 
-Import `x-geolocation.html`.
+Import `x-geolocation.js` and register.
 
 ```html
-<link rel="import" href="x-geolocation.html">
+<script type="module">
+  import XNotification from './x-notification.js';
+  customElements.define('x-notification', XNotification);
+</script>
 ```
 
 Put `<x-geolocation>` tag.
@@ -57,4 +54,4 @@ document.querySelector('x-geolocation').addEventListener('positionchange', funct
 
 ## License
 
-MIT
+[MIT](https://1000ch.mit-license.org) © [Shogo Sensui](https://github.com/1000ch)
