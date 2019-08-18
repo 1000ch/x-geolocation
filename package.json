@@ -23,7 +23,7 @@
   },
   "module": "dist/x-geolocation.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && terser --output dist/x-geolocation.js dist/x-geolocation.js",
     "prepublishOnly": "npm run build",
     "test": "xo"
   },
@@ -34,6 +34,7 @@
     "space": true
   },
   "devDependencies": {
+    "terser": "^4.1.4",
     "typescript": "^3.5.3",
     "xo": "^0.24.0"
   }
