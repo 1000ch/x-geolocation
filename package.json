@@ -21,6 +21,7 @@
     "email": "shogosensui@gmail.com",
     "web": "https://github.com/1000ch"
   },
+  "module": "dist/x-geolocation.js",
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build",

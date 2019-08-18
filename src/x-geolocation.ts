@@ -1,26 +1,48 @@
 export default class XGeolocation extends HTMLElement {
-  get latitude() {
-    return this.getAttribute('latitude');
+  watchPositionId: number | undefined = undefined;
+
+  get latitude(): number | undefined {
+    if (this.hasAttribute('latitude')) {
+      return Number(this.getAttribute('latitude'));
+    }
+
+    return undefined;
   }
 
-  set latitude(value) {
-    this.setAttribute('latitude', value);
+  set latitude(value: number | undefined) {
+    if (value == null) {
+      this.removeAttribute('latitude');
+    } else {
+      this.setAttribute('latitude', String(value));
+    }
   }
 
-  get longitude() {
-    return this.getAttribute('longitude');
+  get longitude(): number | undefined {
+    if (this.hasAttribute('longitude')) {
+      return Number(this.getAttribute('longitude'));
+    }
+
+    return undefined;
   }
 
-  set longitude(value) {
-    this.setAttribute('longitude', value);
+  set longitude(value: number | undefined ) {
+    if (value == null) {
+      this.removeAttribute('longitude');
+    } else {
+      this.setAttribute('longitude', String(value));
+    }
   }
 
-  get monitor() {
+  get monitor(): boolean | undefined {
     return this.hasAttribute('monitor');
   }
 
-  set monitor(value) {
-    this.setAttribute('monitor', value);
+  set monitor(value: boolean | undefined) {
+    if (value == null || value === false) {
+      this.removeAttribute('monitor');
+    } else {
+      this.setAttribute('monitor', String(value));
+    }
   }
 
   connectedCallback() {
@@ -38,7 +60,7 @@ export default class XGeolocation extends HTMLElement {
     this.stopMonitoring();
   }
 
-  attributeChangedCallback(attributeName) {
+  attributeChangedCallback(attributeName: string) {
     if (attributeName === 'monitor') {
       if (this.monitor) {
         this.monitorPosition();
@@ -48,7 +70,7 @@ export default class XGeolocation extends HTMLElement {
     }
   }
 
-  onPositionChangedCallback(position) {
+  onPositionChangedCallback(position: Position) {
     this.latitude = position.coords.latitude;
     this.longitude = position.coords.longitude;
 
@@ -60,7 +82,7 @@ export default class XGeolocation extends HTMLElement {
     }));
   }
 
-  onPositionErrorCallback(positionError) {
+  onPositionErrorCallback(positionError: PositionError) {
     console.error(positionError);
   }
 
