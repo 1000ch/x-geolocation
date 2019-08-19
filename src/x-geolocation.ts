@@ -25,7 +25,7 @@ export default class XGeolocation extends HTMLElement {
     return undefined;
   }
 
-  set longitude(value: number | undefined ) {
+  set longitude(value: number | undefined) {
     if (value == null) {
       this.removeAttribute('longitude');
     } else {
@@ -74,12 +74,13 @@ export default class XGeolocation extends HTMLElement {
     this.latitude = position.coords.latitude;
     this.longitude = position.coords.longitude;
 
-    this.dispatchEvent(new CustomEvent('positionchange', {
+    const event = new CustomEvent('positionchange', {
       detail: {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
       }
-    }));
+    });
+    this.dispatchEvent(event);
   }
 
   onPositionErrorCallback(positionError: PositionError) {

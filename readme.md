@@ -1,6 +1,6 @@
 # `<x-geolocation>` [![Build Status](https://travis-ci.org/1000ch/x-geolocation.svg?branch=master)](https://travis-ci.org/1000ch/x-geolocation)
 
-Geolocation API Wrapper Element.
+Declarative Geolocation API as Web Components.
 
 ## Install
 

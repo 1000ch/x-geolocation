@@ -1,11 +1,10 @@
 {
   "name": "x-geolocation",
   "version": "2.0.0",
-  "description": "Geolocation API Wrapper Element.",
+  "description": "Declarative Geolocation API as Web Components.",
   "keywords": [
-    "WebComponents",
-    "geolocation",
-    "web-components"
+    "webcomponents",
+    "geolocation"
   ],
   "homepage": "https://github.com/1000ch/x-geolocation",
   "bugs": {
