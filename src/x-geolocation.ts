@@ -1,5 +1,5 @@
 export default class XGeolocation extends HTMLElement {
-  watchPositionId: number | undefined = undefined;
+  watchPositionId?: number = undefined;
 
   get latitude(): number | undefined {
     if (this.hasAttribute('latitude')) {
