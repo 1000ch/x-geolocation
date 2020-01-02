@@ -1,6 +1,10 @@
-# `<x-geolocation>` [![Build Status](https://travis-ci.org/1000ch/x-geolocation.svg?branch=master)](https://travis-ci.org/1000ch/x-geolocation)
+# `<x-geolocation>`
 
-Declarative Geolocation API as Web Components.
+> Declarative Geolocation API as Web Components.
+
+[![Build Status](https://travis-ci.org/1000ch/x-geolocation.svg?branch=master)](https://travis-ci.org/1000ch/x-geolocation)
+[![NPM version](https://badge.fury.io/js/x-geolocation.svg)](http://badge.fury.io/js/x-geolocation)
+[![devDependency Status](https://david-dm.org/1000ch/x-geolocation/dev-status.svg)](https://david-dm.org/1000ch/x-geolocation?type=dev)
 
 ## Install
 
@@ -16,8 +20,8 @@ Import `XGeolocation` and register it.
 
 ```html
 <script type="module">
-import XNotification from 'https://cdn.jsdelivr.net/npm/x-notification/dist/index.js';
-customElements.define('x-notification', XNotification);
+import XGeolocation from 'https://cdn.jsdelivr.net/npm/x-geolocation/dist/index.js';
+customElements.define('x-geolocation', XGeolocation);
 </script>
 ```
 

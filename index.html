@@ -2,9 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>&lt;x-geolocation&gt;</title>
+    <title>&lt;x-geolocation&gt;: Declarative Geolocation API as Web Components.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/github.min.css">
     <style>
       * {
         box-sizing: border-box;
@@ -28,50 +27,107 @@
     <script defer src="https://unpkg.com/github-corner@2.0.2"></script>
     <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
     <script type="module">
+      import XMarked from 'https://cdn.jsdelivr.net/npm/x-marked/dist/index.js';
       import XGeolocation from 'https://cdn.jsdelivr.net/npm/x-geolocation/dist/index.js';
+      customElements.define('x-marked', XMarked);
       customElements.define('x-geolocation', XGeolocation);
 
       window.addEventListener('load', () => {
-        document.querySelectorAll('pre code').forEach(block => {
+        const xmarked = document.querySelector('x-marked');
+        xmarked.shadowRoot.querySelectorAll('pre code').forEach(block => {
           hljs.highlightBlock(block);
         });
 
-        document.querySelector('x-geolocation').addEventListener('positionchange', e => {
-          document.querySelector('#latitude').value = e.detail.latitude;
-          document.querySelector('#longitude').value = e.detail.longitude;
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/github.min.css';
+        xmarked.shadowRoot.appendChild(link);
+
+        const div = document.querySelector('div');
+        const h2 = xmarked.shadowRoot.querySelector('h2');
+        xmarked.shadowRoot.querySelector('div').insertBefore(div, h2);
+
+        xmarked.shadowRoot.querySelector('x-geolocation').addEventListener('positionchange', e => {
+          xmarked.shadowRoot.querySelector('#latitude').value = e.detail.latitude;
+          xmarked.shadowRoot.querySelector('#longitude').value = e.detail.longitude;
         });
       });
     </script>
   </head>
   <body>
-    <github-corner>
-      <a href="https://github.com/1000ch/x-geolocation">GitHub</a>
-    </github-corner>
-    <div class="container">
-      <h1><a href="https://github.com/1000ch/x-geolocation">&lt;x-geolocation&gt;</a></h1>
-      <p>Declarative Geolocation API as Web Components.</p>
+    <div>
       <!-- Place this tag where you want the button to render. -->
       <a class="github-button" href="https://github.com/1000ch/x-geolocation" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star 1000ch/x-geolocation on GitHub">Star</a>
       <!-- Place this tag where you want the button to render. -->
       <a class="github-button" href="https://github.com/1000ch" data-size="large" data-show-count="true" aria-label="Follow @1000ch on GitHub">Follow @1000ch</a>
-      <h2>Install</h2>
-      <pre><code class="bash"># via npm
-$ npm install x-geolocation</code></pre>
-      <h2>Usage</h2>
-      <p>Import <code>x-geolocation.js</code> and register.</p>
-      <pre><code class="html">&lt;script type="module"&gt;
+    </div>
+    <github-corner>
+      <a href="https://github.com/1000ch/x-geolocation">GitHub</a>
+    </github-corner>
+    <x-marked class="container">
+# `<x-geolocation>`
+
+Declarative Geolocation API as Web Components.
+
+## Demo
+
+<x-geolocation monitor></x-geolocation>
+Latitude: <input id="latitude" type="text" readonly>
+Longitude: <input id="longitude" type="text" readonly>
+
+## Install
+
+Using [npm](https://www.npmjs.org/package/x-geolocation):
+
+```sh
+$ npm install x-geolocation
+```
+
+## Usage
+
+Import `XGeolocation` and register it.
+
+```html
+<script type="module">
 import XGeolocation from 'https://cdn.jsdelivr.net/npm/x-geolocation/dist/index.js';
 customElements.define('x-geolocation', XGeolocation);
-&lt;/script&gt;</code></pre>
-      <p>Put <code>&lt;x-geolocation&gt;</code> tag.</p>
-      <pre><code class="html">&lt;x-geolocation&gt;&lt;/x-geolocation&gt;</code></pre>
-      <h2>Demo</h2>
-      <pre><code class="html">&lt;x-monitor monitor&gt;&lt;/x-notification&gt;</code></pre>
-      <x-geolocation monitor></x-geolocation>
-      Latitude: <input id="latitude" type="text" readonly>
-      Longitude: <input id="longitude" type="text" readonly>
-      <h2>License</h2>
-      <p><a href="https://1000ch.mit-license.org" rel="nofollow">MIT</a> © <a href="https://github.com/1000ch">Shogo Sensui</a></p>
-    </div>
+</script>
+```
+
+Put `<x-geolocation>` tag.
+
+```html
+<x-geolocation></x-geolocation>
+```
+
+### Monitoring position change
+
+To monitor position changing, execute `monitorPosition()` function.
+
+```js
+document.querySelector('x-geolocation').monitorPosition();
+```
+
+Or set `monitor` attribute.
+
+```html
+<x-geolocation monitor></x-geolocation>
+```
+
+### Handle position changes
+
+Handle `positionchange` event using `addEventListener()`.
+
+```js
+document.querySelector('x-geolocation').addEventListener('positionchange', e => {
+  console.log('latitude:', e.detail.latitude);
+  console.log('longitude:', e.detail.longitude)
+});
+```
+
+## License
+
+[MIT](https://1000ch.mit-license.org) © [Shogo Sensui](https://github.com/1000ch)
+    </x-marked>
   </body>
 </html>
