@@ -12,12 +12,12 @@ $ npm install x-geolocation
 
 ## Usage
 
-Import `x-geolocation.js` and register.
+Import `XGeolocation` and register it.
 
 ```html
 <script type="module">
-  import XNotification from './x-notification.js';
-  customElements.define('x-notification', XNotification);
+import XNotification from 'https://cdn.jsdelivr.net/npm/x-notification/dist/index.js';
+customElements.define('x-notification', XNotification);
 </script>
 ```
 
@@ -46,7 +46,7 @@ Or set `monitor` attribute.
 Handle `positionchange` event using `addEventListener()`.
 
 ```js
-document.querySelector('x-geolocation').addEventListener('positionchange', function (e) {
+document.querySelector('x-geolocation').addEventListener('positionchange', e => {
   console.log('latitude:', e.detail.latitude);
   console.log('longitude:', e.detail.longitude)
 });
