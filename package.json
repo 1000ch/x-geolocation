@@ -20,10 +20,10 @@
     "email": "shogosensui@gmail.com",
     "web": "https://github.com/1000ch"
   },
-  "module": "dist/x-geolocation.js",
+  "module": "dist/index.js",
   "scripts": {
-    "build": "tsc && terser --output dist/x-geolocation.js dist/x-geolocation.js",
-    "prepublishOnly": "npm run build",
+    "build": "tsc && terser --output dist/index.js dist/index.js",
+    "prepublish": "npm run build",
     "test": "xo"
   },
   "xo": {
