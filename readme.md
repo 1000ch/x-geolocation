@@ -20,7 +20,8 @@ Import `XGeolocation` and register it.
 
 ```html
 <script type="module">
-import XGeolocation from 'https://unpkg.com/x-geolocation/dist/index.js';
+import XGeolocation from 'https://unpkg.com/x-geolocation';
+
 customElements.define('x-geolocation', XGeolocation);
 </script>
 ```
