@@ -1,6 +1,6 @@
 {
   "name": "x-geolocation",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Declarative Geolocation API as Web Components.",
   "keywords": [
     "webcomponents",
