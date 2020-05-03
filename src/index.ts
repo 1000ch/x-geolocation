@@ -10,7 +10,7 @@ export default class XGeolocation extends HTMLElement {
   }
 
   set latitude(value: number | undefined) {
-    if (value == null) {
+    if (value === null || value === undefined) {
       this.removeAttribute('latitude');
     } else {
       this.setAttribute('latitude', String(value));
@@ -26,7 +26,7 @@ export default class XGeolocation extends HTMLElement {
   }
 
   set longitude(value: number | undefined) {
-    if (value == null) {
+    if (value === null || value === undefined) {
       this.removeAttribute('longitude');
     } else {
       this.setAttribute('longitude', String(value));
@@ -38,7 +38,7 @@ export default class XGeolocation extends HTMLElement {
   }
 
   set monitor(value: boolean | undefined) {
-    if (value == null || value === false) {
+    if (value === null || value === undefined || !value) {
       this.removeAttribute('monitor');
     } else {
       this.setAttribute('monitor', String(value));
