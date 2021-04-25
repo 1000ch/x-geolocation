@@ -70,7 +70,7 @@ export default class XGeolocation extends HTMLElement {
     }
   }
 
-  onPositionChangedCallback(position: Position) {
+  onPositionChangedCallback(position: GeolocationPosition) {
     this.latitude = position.coords.latitude;
     this.longitude = position.coords.longitude;
 
@@ -83,7 +83,7 @@ export default class XGeolocation extends HTMLElement {
     this.dispatchEvent(event);
   }
 
-  onPositionErrorCallback(positionError: PositionError) {
+  onPositionErrorCallback(positionError: GeolocationPositionError) {
     console.error(positionError);
   }
 
