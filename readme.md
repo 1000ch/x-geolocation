@@ -1,4 +1,4 @@
-# x-geolocation [![Build Status](https://travis-ci.org/1000ch/x-geolocation.svg?branch=master)](https://travis-ci.org/1000ch/x-geolocation) [![devDependency Status](https://david-dm.org/1000ch/x-geolocation/dev-status.svg)](https://david-dm.org/1000ch/x-geolocation?type=dev)
+# x-geolocation ![GitHub Actions Status](https://github.com/1000ch/x-geolocation/workflows/test/badge.svg)
 
 > Declarative Geolocation API as Web Components.
 
