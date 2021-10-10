@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export default class XGeolocation extends HTMLElement {
   watchPositionId?: number = undefined;
 
@@ -48,7 +49,7 @@ export default class XGeolocation extends HTMLElement {
   connectedCallback() {
     navigator.geolocation.getCurrentPosition(
       this.onPositionChangedCallback.bind(this),
-      this.onPositionErrorCallback.bind(this)
+      this.onPositionErrorCallback.bind(this),
     );
 
     if (this.monitor) {
@@ -77,8 +78,8 @@ export default class XGeolocation extends HTMLElement {
     const event = new CustomEvent('positionchange', {
       detail: {
         latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      }
+        longitude: position.coords.longitude,
+      },
     });
     this.dispatchEvent(event);
   }
@@ -91,7 +92,7 @@ export default class XGeolocation extends HTMLElement {
     if (!this.watchPositionId) {
       this.watchPositionId = navigator.geolocation.watchPosition(
         this.onPositionChangedCallback.bind(this),
-        this.onPositionErrorCallback.bind(this)
+        this.onPositionErrorCallback.bind(this),
       );
     }
   }
